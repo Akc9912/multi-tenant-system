@@ -1,0 +1,82 @@
+version: "3.8"
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: multirubro-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: multirubro_db
+      MYSQL_USER: multirubro_user
+      MYSQL_PASSWORD: multirubro_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - multirubro-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Redis (optional, para Phase 2+)
+  redis:
+    image: redis:7-alpine
+    container_name: multirubro-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - multirubro-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      timeout: 10s
+      retries: 5
+
+  # Backend (spring boot)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: multirubro-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/multirubro_db?serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: multirubro_user
+      SPRING_DATASOURCE_PASSWORD: multirubro_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - multirubro-network
+    volumes:
+      - ./backend:/app
+    command: mvn spring-boot:run
+
+  # Frontend (React)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: multirubro-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: http://localhost:8080/api/v1
+    depends_on:
+      - backend
+    networks:
+      - multirubro-network
+    volumes:
+      - ./frontend/src:/app/src
+    command: npm run dev
+
+networks:
+  multirubro-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
