@@ -1,16 +1,33 @@
-# multi-tenant-system
-
 # SaaS MultiRubro - Gestión Integral de Negocios
 
-Plataforma SaaS para la gestión integral de **bares, boliches, salones de fiesta, restaurantes y sedes múltiples**, con control de personal, stock, reservas, caja, mantenimiento, proveedores, alquileres y contrataciones externas.
+Plataforma SaaS para la gestión integral de **negocios de cualquier rubro** (bares, boliches, salones de fiesta, restaurantes, barbería, salones de belleza, clínicas, y más) con **punto de venta**, **gestión de turnos**, control de personal, stock, reservas, caja, mantenimiento, proveedores, alquileres y contrataciones externas.
 
 El sistema está diseñado como **backend monolítico modular**, preparado para una futura **migración progresiva a microservicios** sin reescrituras.
+
+> **📚 Documentación completa**: Ver [docs/INDEX.md](./docs/INDEX.md)  
+> **🏗️ Arquitectura del sistema**: [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)  
+> **📊 Desarrollo**: [docs/ROADMAP.md](./docs/ROADMAP.md) | [Backend](./docs/ROADMAP_BACKEND.md) | [Frontend](./docs/ROADMAP_FRONTEND.md) | [DevOps](./docs/ROADMAP_DEVOPS.md)  
+> **👥 Contribuir**: [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md)  
+> **🛠️ Stack & Prácticas**: [docs/STACK_Y_PRACTICAS.md](./docs/STACK_Y_PRACTICAS.md)
 
 ---
 
 ## 🎯 Objetivo del Proyecto
 
-Construir una plataforma **escalable, segura y multi-tenant** que permita a una misma empresa gestionar múltiples locales (sedes) de distinto rubro desde un solo sistema, con control total por roles y sectores.
+Construir una plataforma **escalable, segura y multi-tenant** que permita a empresas de **cualquier tamaño y rubro** gestionar múltiples locales (sedes) desde un solo sistema. Desde pequeñas barbería y salones de belleza, hasta grandes restaurantes y cadenas de negocios, con control total por roles, sectores, y capacidades de punto de venta integrado.
+
+---
+
+## 🏢 Casos de Uso
+
+La plataforma está diseñada para servir a:
+
+* **Pequeños negocios** - Barberías, salones de belleza, peluquerías, spa
+* **Servicios y citas** - Clínicas, consultorios, centros de estética, estudios
+* **Gastronomía** - Restaurantes, bares, cafeterías, cantinas, parrillas
+* **Entretenimiento** - Boliches, salones de fiesta, discotecas
+* **Comercios minoristas** - Tiendas, boutiques, farmacias
+* **Cadenas multilocal** - Cualquier negocio con múltiples sucursales y diferentes rubros integrados
 
 ---
 
@@ -36,19 +53,21 @@ Construir una plataforma **escalable, segura y multi-tenant** que permita a una 
 ### Módulos Base
 
 * Autenticación y autorización
-* Usuarios
+* Usuarios y perfiles
 * Empresas
-* Sedes (bares, boliches, salones, restaurantes)
-* Roles y permisos
+* Sedes (bares, restaurantes, barbería, salones de belleza, clínicas, comercios, etc.)
+* Roles y permisos avanzados
 * Auditoría y logs
 * Archivos (contratos, comprobantes, imágenes)
 
 ### Módulos Operativos
 
-* Stock
+* **Punto de Venta (POS)** - Sistema completo de ventas
+* **Gestión de Turnos** - Agendamientos para servicios y atención
+* Stock e Inventario
 * Depósito
 * Proveedores
-* Caja
+* Caja y pagos
 * Reservas y eventos
 * Mantenimiento
 * Limpieza
@@ -62,11 +81,13 @@ Construir una plataforma **escalable, segura y multi-tenant** que permita a una 
 
 * Super Admin Plataforma
 * Admin Empresa
-* Encargado
+* Encargado de sucursal
 * Subencargado
-* Empleado
+* Empleado / Operario
+* Vendedor / Cajero
+* Profesional (barbero, peluquero, esteticien, etc.)
 * Técnico
-* Limpieza
+* Personal de limpieza
 * Depósito
 * Proveedor
 * Tercero contratado
@@ -89,19 +110,26 @@ Cada usuario puede:
 
 ### Etapa 1 – MVP Vendible
 
+Incluye todas las capacidades esenciales para ser **inmediatamente vendible a pequeños y medianos negocios**:
+
 * Multiempresa y multisede
-* Roles base
-* Stock básico
-* Reservas
-* Caja simple
-* Panel web administrativo
+* Roles y permisos granulares
+* **Punto de Venta (POS)** - Transacciones, productos, clientes, recibos
+* **Gestión de Turnos** - Agendamientos, profesionales, servicios, disponibilidad
+* Stock e inventario básico
+* Reservas y eventos
+* Caja integrada con múltiples formas de pago
+* Panel web administrativo intuitivo
+* Reportes de ventas y operaciones básicos
 
 ### Etapa 2 – Post-MVP
 
+* **Punto de Venta avanzado** (promociones, descuentos, combos, integraciones de pago)
+* **Gestión de Turnos mejorada** (recordatorios, cancelaciones, no-shows, historial)
 * Mantenimiento, limpieza, proveedores
 * Alquileres
 * Seguridad avanzada
-* Versión desktop
+* Versión desktop (POS de escritorio)
 
 ### Etapa 3 – Escalabilidad
 
@@ -222,6 +250,6 @@ Este proyecto es privado. Su uso, distribución o comercialización sin autoriza
 
 ---
 
-## 🚀 Estado del Proyecto
+## ��� Estado del Proyecto
 
-🔧 En desarrollo activo – Fase de arquitectura y definición de MVP
+��� En desarrollo activo – Fase de arquitectura y definición de MVP
