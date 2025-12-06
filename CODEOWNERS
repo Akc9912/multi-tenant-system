@@ -1,0 +1,11 @@
+# CODEOWNERS
+# Formato: ruta  @usuario-o-equipo
+
+# Owners por carpeta (ajusta los usuarios/equipos reales)
+/docs/    @Akc9912
+/backend/ @Akc9912
+/frontend/ @Akc9912
+/.github/ @Akc9912
+
+# Fallback: propietario del repositorio
+* @Akc9912
