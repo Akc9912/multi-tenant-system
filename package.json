@@ -15,4 +15,11 @@
   "engines": {
     "node": ">=18.0.0"
   }
+  ,
+  "lint-staged": {
+    "frontend/src/**/*.{ts,tsx,js,jsx,json,css,md}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
 }
